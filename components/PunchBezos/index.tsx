@@ -5,11 +5,9 @@ const PunchJeffBezos: React.FC = () => {
 
   const handlePunch = () => {
     setPunched(true);
-
-    // After a delay, reset the punched state to revert the animation
     setTimeout(() => {
       setPunched(false);
-    }, 1000); // Adjust the delay as needed
+    }, 1000);
   };
 
   return (

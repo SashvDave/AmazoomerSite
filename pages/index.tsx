@@ -4,6 +4,7 @@ import { Urbanist } from "next/font/google";
 import SignUp from "~/components/sections/SignUp";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "../firebaseConfig";
+import Dashboard from "./Dashboard";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -40,7 +41,7 @@ const Home = () => {
       >
         <div>
           <div className="hidden md:block">
-            <SignUp />
+            <Dashboard />
           </div>
           <p className="md:hidden text-center mt-[10rem]">
             Please open Amazoomer in a laptop browser

@@ -11,31 +11,30 @@ import PunchJeffBezos from "../PunchBezos";
 const db = getFirestore(app);
 
 const DashboardPage = () => {
-  const [user, setUser] = useState(null);
-  const [uidFetched, setUidFetched] = useState(false);
+  // const [user, setUser] = useState(null);
+  // const [uidFetched, setUidFetched] = useState(false);
   const [adBreak, setAdBreak] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    const { user: userParam } = router.query;
-    if (userParam) {
-      {
-        /* @ts-ignore */
-      }
-      setUser(JSON.parse(Array.isArray(userParam) ? userParam[0] : userParam));
-    } else {
-    }
-  }, [router.query]);
+  // useEffect(() => {
+  //   const { user: userParam } = router.query;
+  //   if (userParam) {
+  //     {
+  //       /* @ts-ignore */
+  //     }
+  //     setUser(JSON.parse(Array.isArray(userParam) ? userParam[0] : userParam));
+  //   } else {
+  //   }
+  // }, [router.query]);
 
-  useEffect(() => {
-    {
-      /* @ts-ignore */
-    }
-    if (user && user.uid) {
-      fetchUserForms();
-      setUidFetched(true);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   {
+  //     /* @ts-ignore */
+  //   }
+  //   if (user && user.uid) {
+  //     setUidFetched(true);
+  //   }
+  // }, [user]);
 
   const handleLogout = async () => {
     try {
@@ -47,33 +46,8 @@ const DashboardPage = () => {
     }
   };
 
-  const fetchUserForms = async () => {
-    try {
-      {
-        /* @ts-ignore */
-      }
-      console.log(user.uid);
-      const formsQuery = query(
-        collection(db, "created_forms"),
-        //@ts-ignore
-        where("creatorId", "==", user.uid)
-      );
-      const querySnapshot = await getDocs(formsQuery);
-      const forms = querySnapshot.docs.map((doc) => doc.data());
-      {
-        /* @ts-ignore */
-      }
-      setForms(forms);
-      console.log(forms);
-    } catch (error) {
-      console.error("Error fetching user forms:", error);
-    }
-  };
-
   return (
     <div className="w-full flex flex-col relative bg-[#fafafa]">
-      {!uidFetched && <p>Loading...</p>}
-      {user && uidFetched && (
         <>
           <div className="flex flex-row items-center h-[4rem] bg-[#131921]">
             <img
@@ -85,7 +59,7 @@ const DashboardPage = () => {
             <div>
               <p className="text-[0.8rem] ml-5 text-white">
                 <span style={{ fontWeight: "400" }}>
-                  Deliver to {user.displayName}
+                  Deliver to Sashv
                 </span>
                 <div>
                   <span style={{ fontWeight: "bold" }}>
@@ -105,7 +79,7 @@ const DashboardPage = () => {
             <div>
               <p className="text-[0.8rem] ml-5 text-white">
                 <span style={{ fontWeight: "400" }}>
-                  Hello, {user.displayName.split(" ")[0]}
+                  Hello, Sashv
                 </span>
                 <div>
                   <span style={{ fontWeight: "bold" }}>Accounts & Lists</span>
@@ -130,8 +104,6 @@ const DashboardPage = () => {
             <p className="text-[0.8rem] mb-2">Logout</p>
           </button> */}
         </>
-      )}
-      {user && uidFetched && (
         <>
           <div className="flex flex-row items-center h-[2.5rem] bg-[#222f3e]">
             <div>
@@ -180,8 +152,6 @@ const DashboardPage = () => {
             </p>
           </div>
         </>
-      )}
-      {user && uidFetched && (
         <>
           <div className="bg-white">
             <img
@@ -196,7 +166,7 @@ const DashboardPage = () => {
               <button onClick={() => setAdBreak(true)}>
               <div className="bg-white flex flex-row">
                 
-                <p className="text-[5rem] ml-[5rem] mt-[10rem]">Ad Break!! -></p>
+                <p className="text-[5rem] ml-[5rem] mt-[10rem]">Ad Break!!</p>
                 <img
                   src="/adImg.png"
                   draggable="false"
@@ -260,8 +230,6 @@ const DashboardPage = () => {
             )}
           </div>
         </>
-      )}
-      {user && uidFetched && (
         <>
           <div className="flex flex-col py-[2rem] items-center bg-[#131921]">
             <div className="flex flex-row">
@@ -374,7 +342,6 @@ const DashboardPage = () => {
             <p className="text-[0.8rem] mb-2">Logout</p>
           </button> */}
         </>
-      )}
     </div>
   );
 };
